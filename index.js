@@ -21,6 +21,10 @@ app.post("/api/users", async (req, res) => {
     try {
         const { username, password, city, region, country } = req.body; // Destructure the username, password, and location from the request body.
         
+            
+        console.log('Login request received:', { username, password });
+
+
         // Check if the username already exists
         const [existingUser] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
         if (existingUser.length > 0) {
